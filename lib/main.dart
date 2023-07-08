@@ -64,7 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _selectProcessPath() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
+    _startProcessIfFileSelected(result);
+  }
 
+  void _startProcessIfFileSelected(FilePickerResult? result) async {
     if (result != null && result.files.single.path != null) {
       File file = File(result.files.single.path!);
       final path = file.absolute.path;
